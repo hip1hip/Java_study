@@ -1,0 +1,30 @@
+//p.651 문제04번 소스코드
+
+//package chap15;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+public class RandomAlphabetTest extends JFrame {
+	public RandomAlphabetTest() {
+		String[] alpha = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j" };
+		setTitle("난수 알파벳");
+		setLayout(null);
+
+		for (int i = 0; i < 10; i++) {
+			JLabel label = new JLabel(alpha[i]);
+			int x = 30 + (int) (Math.random() * 220);
+			int y = 30 + (int) (Math.random() * 100);
+			label.setLocation(x, y);
+			label.setSize(20, 20);
+			add(label);
+		}
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setSize(300, 200);
+		setVisible(true);
+	}
+
+	public static void main(String[] args) {
+		new RandomAlphabetTest();
+	}
+}
