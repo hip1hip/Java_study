@@ -15,7 +15,8 @@ public class GameMain {
         System.out.print("1. 남자\t 2. 여자\t 3.제 3의 성");
         // 1. Men 2. Women 3. Third
 
-        int c = Integer.parseInt(se.nextLine());
+        int c = Integer.parseInt(se.nextLine()); //nextLine()메소드는 Enter를 치기 전까지 쓴 문자열 모두 반환한다(공백포함)
+        //next()메소드는 공백 전까지 반환 
         // Integer는 int 의 래퍼 클래스, 매개변수로 객체를 필요로 할 때
         // 기본형 값이 아닌 객체로 저장해야할 때, 객체 간 비교가 필요할 때
         if (c == 1) {
