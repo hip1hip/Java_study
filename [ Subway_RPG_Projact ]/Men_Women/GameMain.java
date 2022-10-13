@@ -13,7 +13,7 @@ public class GameMain {
 
         Scanner se = new Scanner(System.in);
         System.out.println("원하는 주인공을 고르세요.");
-        System.out.print("1. 남자\t 2. 여자");
+        System.out.print("1. 남자\t 2. 여자\t 3.제 3의 성");
         // 1. Men 2. Women 3. Third
 
         int c = Integer.parseInt(se.nextLine()); // nextLine()메소드는 Enter를 치기 전까지 쓴 문자열 모두 반환한다(공백포함)
@@ -25,6 +25,9 @@ public class GameMain {
             sm.playGame(character);
         } else if (c == 2) {
             character = new Women();
+            sm.playGame(character);
+        } else if (c == 3) {
+            character = new Third();
             sm.playGame(character);
         } else {
             System.out.println("잘 못 입력하셨습니다.");
