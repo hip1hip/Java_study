@@ -1,6 +1,7 @@
 package step07;
 
-public class PhoneInfo {
+public class PhoneInfo implements java.io.Serializable {
+    private static final long serialVersionUID = 1L;
     String name;
     String phoneNumber;
     String email;
