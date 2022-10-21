@@ -20,6 +20,11 @@ public class DungeonMain {
         int numHealthPotions = 3; // 시작 포션 갯수
         int healthPotionHealAmount = 30; // 물약 사용
         int healthPotionDropChance = 50; // 적처치, 물약 50%로 드랍
+        int exp = 80;
+        int level = 1;
+
+        // 턴
+        int turn = 1;
 
         boolean running = true;
         System.out.println("------------------------------------------------------------");
@@ -48,6 +53,9 @@ public class DungeonMain {
                     enemyHealth -= damageDealt; // 적체력 마이너스
                     health -= damageTaken; // 내체력 마이너스
 
+                    // 공격 몇 턴 째인지
+                    System.out.println("\t> " + turn + "번째 공격");
+                    turn++;
                     System.out.println("\t> 당신은 공격하여 " + enemy + " 에게 " + damageDealt + "데미지를 입혔습니다!");
                     System.out.println("\t> 적이 공격하여 " + damageTaken + "피해를 입었습니다! ");
 
@@ -84,12 +92,28 @@ public class DungeonMain {
             }
 
             System.out.println("------------------------------------------------------------");
-            System.out.println(" # " + enemy + " 를 물리쳤다! #");
+            System.out.println("\n # " + enemy + " 를 물리쳤다! #");
             System.out.println(" # 당신의 체력은 " + health + " HP 남았습니다 #");
+
+            int enemyExp = rand.nextInt(exp);
+            exp += enemyExp;
+
+            int expbar = 100;
+            if (enemyExp >= expbar) {
+                level++;
+                enemyExp -= expbar;
+                health += 30;
+                expbar += 20;
+                System.out.println("\n\t !!!레벨업!!! ");
+                System.out.println("\n # 체력이 상승합니다.");
+            }
+            System.out.println(" # 현제 레벨 : " + level + "\t 남은 경험치 : " + enemyExp + ("/") + expbar + " # ");
+
+            System.out.println(" ");
             if (rand.nextInt(100) < healthPotionDropChance) { // 0~ 100 랜덤 확률로 포션 드롭 명령
                 numHealthPotions++;
                 System.out.println(" # " + enemy + "가 포션을 드롭했습니다! # ");
-                System.out.println(" # " + numHealthPotions + "개를 가지고 있습니다. # ");
+                System.out.println(" # 포션 " + numHealthPotions + "개를 가지고 있습니다. # ");
             }
             System.out.println("------------------------------------------------------------");
             System.out.println("이제 무엇을 할 건가요?");
