@@ -4,7 +4,7 @@ public class MyGame {
     Item[] items;
 
     MyGame() {
-        c = new Character("구암동불주먹", 100, 50, 20, 10);
+        c = new Character("구암동불주먹", 80, 50, 20, 10);
 
         items = new Item[10];
         items[0] = new Item("무한의대검", 0, 0, 10, 0);
@@ -52,7 +52,7 @@ public class MyGame {
                     c.attack(m);
                     if (m.hp <= 0) {
                         System.out.println(m.name + "을 처치하였습니다.");
-                        c.getExp(150);
+                        c.getExp(100);
                         c.getItem(m.itemDrop());
                         break battle;
                     }
