@@ -1,4 +1,3 @@
-import java.util.Scanner;
 
 public class MainGame {
 
@@ -6,7 +5,7 @@ public class MainGame {
     Item[] items;
 
     MainGame() {
-        c = Character("홍길동", 80, 50, 20, 10);
+        c = new Character("홍길동", 80, 50, 40, 10);
 
         items = new Item[10];
         items[0] = new Item("대검", 0, 0, 10, 0);
@@ -21,7 +20,7 @@ public class MainGame {
     void start() {
         int input = 0;
         while (true) {
-            System.out.println("1. 내정보 \t2.사냥 \t3.탈출");
+            System.out.println("1.내정보\t2.사냥\t3.탈출");
             input = ScanUtil.nextInt();
             switch (input) {
                 case 1:
@@ -41,7 +40,7 @@ public class MainGame {
     }
 
     void hunt() {
-        Monster m = new Monster("고블린", 50, 10, 5);
+        Monster m = new Monster("고블린", 50, 10, 20, 10, 5, 5, new Item[] { items[0], items[1] });
         System.out.println(m.name + "을 만났습니다. 전투를 시작합니다.");
 
         int input = 0;
@@ -52,7 +51,7 @@ public class MainGame {
             switch (input) {
                 case 1:
                     c.attack(m);
-                    if (m.hp <= 0) {
+                    if (m.hp < 1) {
                         System.out.println(m.name + "을 처치하였습니다.");
                         c.getExp(100);
                         c.getItem(m.itemDrop());

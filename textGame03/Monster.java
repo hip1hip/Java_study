@@ -1,16 +1,23 @@
-
 public class Monster {
+
     String name; // 이름
+    int maxHp; // 최대체력
+    int maxMp; // 최대마나
     int hp; // 체력
+    int mp; // 마나
     int att; // 공격력
     int def; // 방어력
-    Item[] items;
+    Item[] items; // 보유아이템을 저장할 배열
 
-    Monster(String name, int hp, int att, int def) {
+    Monster(String name, int maxHp, int matMp, int hp, int mp, int att, int def, Item[] items) {
         this.name = name;
+        this.maxHp = hp;
+        this.maxMp = mp;
+        this.hp = this.maxHp;
+        this.mp = this.maxMp;
         this.att = att;
         this.def = def;
-        this.hp = hp;
+        this.items = items;
     }
 
     void attack(Character c) {

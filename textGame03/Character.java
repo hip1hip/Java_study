@@ -16,10 +16,10 @@ public class Character {
 
     Character(String name, int hp, int mp, int att, int def) { // 생성자를 만들어 변수 초기화
         this.name = name;
-        this.maxHp = maxHp;
-        this.maxMp = maxMp;
-        this.hp = hp;
-        this.mp = mp;
+        this.maxHp = hp;
+        this.maxMp = mp;
+        this.hp = maxHp;
+        this.mp = maxMp;
         this.att = att;
         this.def = def;
         this.level = 1;
@@ -51,8 +51,8 @@ public class Character {
     void attack(Monster m) {
         int damage = att - m.def;
         damage = damage <= 0 ? 1 : rand.nextInt(damage); // 조건 연산자(?:) true면 연산식 1 값 false면 연산식2 중 실행
-
-        m.hp = m.hp < damage ? m.hp = m.hp : m.hp - damage;
+        // damage = rand.nextInt(damage);
+        m.hp = m.hp < damage ? m.hp - m.hp : m.hp - damage;
         System.out.println(name + "이 공격적으로 " + m.name + "에게 "
                 + damage + "만큼 데미지를 주었습니다.");
         System.out.println(m.name + "의 현재 HP : " + m.hp);
@@ -65,7 +65,7 @@ public class Character {
         this.exp += exp;
         while (maxExp <= this.exp) {
             levelUp();
-            this.exp -= maxExp;
+            this.exp -= exp;
 
         }
 
@@ -86,7 +86,7 @@ public class Character {
     }
 
     void getItem(Item item) {
-        System.out.println(item.itname + "을 획득하였습니다.");
+        System.out.println(item.name + "을 획득하였습니다.");
         for (int i = 0; i < items.length; i++) {
             if (items[i] == null) {
                 items[i] = item;
