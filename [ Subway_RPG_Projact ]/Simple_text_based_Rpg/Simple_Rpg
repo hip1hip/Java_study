@@ -1,3 +1,5 @@
+package Simple_text_based_Rpg;
+
 import java.util.*;
 
 public class driver {

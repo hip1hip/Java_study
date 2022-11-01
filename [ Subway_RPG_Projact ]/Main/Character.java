@@ -10,7 +10,7 @@ public class Character {
     int level; // 레벨
     int exp; // 경험치
     int maxExp;
-    // Item[] items; // 보유아이템을 저장할 배열
+    Item[] items; // 보유아이템을 저장할 배열
 
     Character(String name, int hp, int mp, int att, int def) { // 생성자 만들어서 변수 초기화
         this.name = name;
@@ -20,7 +20,7 @@ public class Character {
         this.def = def;
         this.level = 1;
         this.exp = this.maxExp;
-        // this.items = new Item[10];
+        this.items = new Item[0];
         this.maxExp = 100;
 
     }
@@ -36,11 +36,11 @@ public class Character {
         System.out.println("공격 : " + att);
         System.out.println("방어 : " + def);
         System.out.println("------------ 아이템 --------------");
-        // for (int i = 0; i < items.length; i++) {
-        // if (items[i] != null) {
-        // System.out.println(items[i]);
-        // }
-        // }
+        for (int i = 0; i < items.length; i++) {
+            if (items[i] != null) {
+                System.out.println(items[i]);
+            }
+        }
         System.out.println("================================");
     }
 }

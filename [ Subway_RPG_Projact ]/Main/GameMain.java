@@ -5,7 +5,6 @@ public class GameMain {
 
     static Character c = new Character(null, 0, 0, 0, 0);
     static Event even;
-    static Monster elite;
 
     public static void main(String[] args) {
 
@@ -14,9 +13,9 @@ public class GameMain {
 
         System.out.println(" 서브웨이 RPG \n");
 
-        for (int i = 1; i <= subway.length; i++) {
-            while (true) {
-                System.out.println("1. 내정보 \t2. 전진하기");
+        GAME: while (true) {
+            for (int i = 1; i <= subway.length;) {
+                System.out.println("1. 내정보 \t2. 다음역 이동하기 ");
 
                 input = ScanUtil.nextInt();
 
@@ -26,12 +25,13 @@ public class GameMain {
                         c.showInfo();
                         break;
                     case 2:
+                        i++;
                         if (i % 5 == 0) {
-                            System.out.println(subway[i] + "역 입니다. ");
+                            System.out.println("이번역은 " + subway[i] + "역 입니다. ");
                             System.out.println("엘리트 몬스터 발생");
-                            elite.Elite();
+                            Monster.Elite(c);
                         } else {
-                            System.out.println(subway[i] + "역 입니다. ");
+                            System.out.println("이번역은 " + subway[i] + "역 입니다. ");
                             Event.showEven();
                             break;
                         }
