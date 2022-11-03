@@ -9,7 +9,7 @@ public class Monster {
     int def; // 방어력
     Item[] items; // 보유아이템을 저장할 배열
 
-    Monster(String name, int maxHp, int matMp, int hp, int mp, int att, int def, Item[] items) {
+    Monster(String name, int maxHp, int maxMp, int hp, int mp, int att, int def, Item[] items) {
         this.name = name;
         this.maxHp = hp;
         this.maxMp = mp;
@@ -25,9 +25,9 @@ public class Monster {
         int damage = att - c.def;
         damage = damage <= 0 ? 1 : damage;
         c.hp = c.hp < damage ? c.hp - c.hp : c.hp - damage;
-        System.out.println(name + "가 " + c.name + "에게 "
+        System.out.println("\t" + name + "가 " + c.name + "에게 "
                 + damage + "만큼 데미지를 주었습니다.");
-        System.out.println(c.name + "의 현재 HP : " + c.hp);
+        System.out.println("\t" + c.name + "의 현재 HP : " + c.hp + "\n");
 
     }
 

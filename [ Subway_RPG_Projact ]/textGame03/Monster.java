@@ -25,9 +25,9 @@ public class Monster {
         int damage = att - c.def;
         damage = damage <= 0 ? 1 : damage;
         c.hp = c.hp < damage ? c.hp - c.hp : c.hp - damage;
-        System.out.println(name + "가 " + c.name + "에게 "
+        System.out.println("\t" + name + "가 " + c.name + "에게 "
                 + damage + "만큼 데미지를 주었습니다.");
-        System.out.println(c.name + "의 현재 HP : " + c.hp);
+        System.out.println("\t" + c.name + "의 현재 HP : " + c.hp + "\n");
 
     }
 

@@ -33,10 +33,10 @@ public class Character {
     void showInfo() {
         System.out.println("=================================");
         System.out.println("--------------상태--------------");
-        System.out.println("이름 : " + name);
-        System.out.println("레벨 : " + level + "(" + exp + " / " + maxExp + ")"); // 경험치 최대치도 추가하기
-        System.out.println("체력 : " + hp + " / " + maxHp);
-        System.out.println("마나 : " + mp + " / " + maxMp);
+        System.out.println("\t이름 : " + name);
+        System.out.println("\t레벨 : " + level + "(" + exp + " / " + maxExp + ")"); // 경험치 최대치도 추가하기
+        System.out.println("\t체력 : " + hp + " / " + maxHp);
+        System.out.println("\t마나 : " + mp + " / " + maxMp);
         System.out.println("--------------아이템--------------");
         for (int i = 0; i < items.length; i++) {
             if (items[i] != null) {
@@ -53,15 +53,15 @@ public class Character {
         damage = damage <= 0 ? 1 : rand.nextInt(damage); // 조건 연산자(?:) true면 연산식 1 값 false면 연산식2 중 실행
         // damage = rand.nextInt(damage);
         m.hp = m.hp < damage ? m.hp - m.hp : m.hp - damage;
-        System.out.println(name + "이 공격적으로 " + m.name + "에게 "
+        System.out.println("\t" + name + "이 공격적으로 " + m.name + "에게 "
                 + damage + "만큼 데미지를 주었습니다.");
-        System.out.println(m.name + "의 현재 HP : " + m.hp);
+        System.out.println("\t" + m.name + "의 현재 HP : " + m.hp + "\n");
 
     }
 
     // 경험치를 얻는 메서드
     void getExp(int exp) {
-        System.out.println(exp + "의 경험치를 획득하였습니다.");
+        System.out.println("\t" + exp + "의 경험치를 획득하였습니다.\n");
         this.exp += exp;
         while (maxExp <= this.exp) {
             levelUp();
@@ -82,11 +82,11 @@ public class Character {
         mp = maxMp;
         maxExp *= 1.2;
         exp = maxExp;
-        System.out.println("LEVEL UP!!!");
+        System.out.println("\tLEVEL UP!!!");
     }
 
     void getItem(Item item) {
-        System.out.println(item.name + "을 획득하였습니다.");
+        System.out.println("\t" + item.name + "을 획득하였습니다.\n");
         for (int i = 0; i < items.length; i++) {
             if (items[i] == null) {
                 items[i] = item;
