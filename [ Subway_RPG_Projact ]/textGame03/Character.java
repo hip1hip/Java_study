@@ -65,7 +65,7 @@ public class Character {
         this.exp += exp;
         while (maxExp <= this.exp) {
             levelUp();
-            this.exp -= exp;
+            this.exp -= maxExp;
 
         }
 

@@ -29,7 +29,7 @@ public class GameMain {
                         if (i % 5 == 0) {
                             System.out.println("이번역은 " + subway[i] + "역 입니다. ");
                             System.out.println("엘리트 몬스터 발생");
-                            Monster.Elite(c);
+                            // Monster.Elite(c);
                         } else {
                             System.out.println("이번역은 " + subway[i] + "역 입니다. ");
                             Event.showEven();

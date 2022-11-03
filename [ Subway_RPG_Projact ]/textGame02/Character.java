@@ -30,9 +30,6 @@ public class Character {
 
 	}
 
-	public Character() {
-	}
-
 	// 상태를 보여주는 메서드
 	void showInfo() {
 

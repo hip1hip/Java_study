@@ -9,7 +9,7 @@ public class Monster {
     int def; // 방어력
     Item[] items; // 보유아이템을 저장할 배열
 
-    Monster(String name, int maxHp, int matMp, int hp, int mp, int att, int def, Item[] items) {
+    Monster(String name, int maxHp, int maxMp, int hp, int mp, int att, int def, Item[] items) {
         this.name = name;
         this.maxHp = hp;
         this.maxMp = mp;
