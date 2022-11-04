@@ -20,16 +20,19 @@ public class MainGame {
         items[3] = new Item("롱소드", 0, 0, 20, 0);
         items[4] = new Item("창", 0, 0, 25, 0);
         items[5] = new Item("지팡이", 0, 10, 10, 0);
-        items[6] = new Item("할버드", 0, 0, 0, 0);
+        items[6] = new Item("할버드", 0, 0, 30, 0);
         items[7] = new Item("방패", 0, 0, 0, 30);
-        items[8] = new Item("투구", 20, 0, 0, 0);
+        items[8] = new Item("투구", 20, 0, 0, 40);
         items[9] = new Item("책", 0, 50, 0, 0);
 
     }
 
     public static void main(String[] args) {
-        System.out.println("------------------------------------------------------------");
-        System.out.println("Welcome to the Dungeon!");
+        System.out.println(
+                "\n나의 마지막 기억은 새벽에 잠든 기억이다.\n근데 밖이 어둡다. 새벽인지 밤인지 모르겠다. \n이게 현실인지, 꿈인지 구별이 안간다. \n어째서 서울역으로 가야만 이 곳을 빠져 나갈 수 있을 것 같은 느낌이다.\n여기는 문산역, 경의중앙선을 타고 서울역으로 가야한다.");
+
+        System.out.println("\n------------------------------------------------------------");
+        System.out.println("======================= Subway RPG =========================");
 
         // playMusic("bgm.wav");
         // new BGM();
@@ -71,7 +74,7 @@ public class MainGame {
         MAIN: while (true) {
             System.out.println("------------------------------------------------------------");
 
-            System.out.println("\t1. 내정보\t2. 사냥 \t3. 탈출 ");
+            System.out.println("\t1. 내정보\t2. 출발 \t3. 탈출 ");
             input = ScanUtil.nextInt();
             switch (input) {
                 case 1:
@@ -81,10 +84,11 @@ public class MainGame {
 
                     for (int i = 1; i <= subway.length; i++) {
                         System.out.println("\t이번역은 " + subway[i] + "역 입니다. ");
-                        if (i == 5) {
+                        if (i == 10) {
                             System.out.println("------------------------------------------------------------");
 
                             System.out.println("\t종착역입니다. 게임을 종료합니다.");
+                            System.out.println("------------------------------------------------------------");
                             System.out.println("------------------------------------------------------------");
 
                             System.exit(0);
@@ -111,7 +115,7 @@ public class MainGame {
 
         int input = 0;
         battle: while (true) {
-            System.out.println("\t1. 공격 \t 2. 도망 \t 3. 내상태");
+            System.out.println("\t1. 공격 \t 2. 도망 \t 3. 내정보");
             input = ScanUtil.nextInt();
 
             switch (input) {
