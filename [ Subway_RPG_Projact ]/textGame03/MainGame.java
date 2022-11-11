@@ -1,17 +1,35 @@
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
+import java.util.Random;
 
-import javax.sound.sampled.AudioInputStream;
-import javax.swing.JOptionPane;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 public class MainGame {
+
+    public static void audio() {
+        try {
+            File file = new File("introMusic.wav");
+            Clip clip = AudioSystem.getClip();
+            clip.open(AudioSystem.getAudioInputStream(file));
+            clip.loop(Clip.LOOP_CONTINUOUSLY);
+            // clip.loop(3);
+            clip.start();
+        } catch (Exception e) {
+            System.err.println(" ");
+        }
+    }
+
+    private static String arg;
 
     Character c;
     Item[] items;
 
     MainGame() {
-        c = new Character("홍길동", 80, 50, 20, 10);
+        c = new Character(100, 50, 30, 10);
 
         items = new Item[10];
         items[0] = new Item("대검", 0, 0, 10, 0);
@@ -28,43 +46,30 @@ public class MainGame {
     }
 
     public static void main(String[] args) {
+
+        JFrame f = new JFrame();
+        JPanel p = new JPanel();
+        JLabel l = new JLabel();
+        ImageIcon icon = new ImageIcon(arg);
+        f.setSize(480, 360);
+        f.setVisible(true);
+        l.setIcon(icon);
+        p.add(l);
+        f.getContentPane().add(p);
+        f.setLocationRelativeTo(null);
+        f.setResizable(false);
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        audio();
+
         System.out.println(
                 "\n나의 마지막 기억은 새벽에 잠든 기억이다.\n근데 밖이 어둡다. 새벽인지 밤인지 모르겠다. \n이게 현실인지, 꿈인지 구별이 안간다. \n어째서 서울역으로 가야만 이 곳을 빠져 나갈 수 있을 것 같은 느낌이다.\n여기는 문산역, 경의중앙선을 타고 서울역으로 가야한다.");
 
         System.out.println("\n------------------------------------------------------------");
         System.out.println("======================= Subway RPG =========================");
 
-        // playMusic("bgm.wav");
-        // new BGM();
         new MainGame().start();
 
-        // {
-        // while (true) {
-        // File a = new File("./music/bgm.wav");
-        // AudioInputStream b = AudioSystem.getAudioInputStream(a);
-        // Clip c = AudioSystem.getClip();
-
-        // c.open(b);
-        // c.start();
-
-        // Thread.sleep(c.getMicrosecondLength() / 1000);
-        // }
-        // }
-
     }
-
-    // public static void playMusic(String filepath) {
-    // InputStream music;
-    // try {
-    // music = new FileInputStream(new File(filepath));
-    // AudioInputStream audios = new AudioInputStream(music);
-    // AudioPlayer.player.start(audios);
-
-    // } catch (Exception e) {
-    // JOptionPane.showInputDialog("Error");
-    // }
-
-    // }
 
     String[] subway = new String[] { "문산", "파주", "월롱", "금촌", "금릉", "운정", "야당", "탄현", "일산", "풍산", "백마",
             "곡산", "대곡", "능곡", "행신", "강매", "화전", "수색", "디엠씨", "가좌", "신촌", "서울" };
@@ -89,6 +94,7 @@ public class MainGame {
 
                             System.out.println("\t종착역입니다. 게임을 종료합니다.");
                             System.out.println("------------------------------------------------------------");
+                            System.out.println("플레이를 봐주셔서 감사합니다.");
                             System.out.println("------------------------------------------------------------");
 
                             System.exit(0);
@@ -107,11 +113,15 @@ public class MainGame {
     }
 
     void hunt() {
+        Random rand = new Random();
+        String[] names = { "고블린", "오크", "괴물", "도적", "악마" };
 
-        Monster m = new Monster("황금 고블린", 50, 10, 20, 10, 5, 5, new Item[] { items[0],
+        String name = names[rand.nextInt(names.length)];
+
+        Monster m = new Monster(name, 50, 10, 20, 10, 5, 5, new Item[] { items[0],
                 items[1], items[2], items[3], items[4], items[5], items[6], items[7], items[8], items[9] });
 
-        System.out.println("\t" + m.name + "을 만났습니다. 전투를 시작합니다.");
+        System.out.println("\t" + m.names + "을 만났습니다. 전투를 시작합니다.");
 
         int input = 0;
         battle: while (true) {
@@ -122,7 +132,7 @@ public class MainGame {
                 case 1:
                     c.attack(m);
                     if (m.hp < 1) {
-                        System.out.println("\t" + m.name + "을 처치하였습니다.");
+                        System.out.println("\t" + m.names + "을 처치하였습니다.");
                         c.getExp(100);
                         c.getItem(m.itemDrop());
 
@@ -131,7 +141,7 @@ public class MainGame {
                     m.attack(c);
                     break;
                 case 2:
-                    System.out.println("\t도망쳤습니다.");
+                    System.out.println("\t도망쳤습니다, 다음 구역으로 이동합니다.");
                     System.out.println("------------------------------------------------------------");
 
                     break battle;

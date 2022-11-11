@@ -1,7 +1,7 @@
 import java.util.Random;
 
 public class Character {
-    String name; //
+    String name = "홍길동"; //
     int maxHp;
     int maxMp;
     int hp;
@@ -14,8 +14,8 @@ public class Character {
     Item[] items;
     Random rand = new Random();
 
-    Character(String name, int hp, int mp, int att, int def) { // 생성자를 만들어 변수 초기화
-        this.name = name;
+    Character(int hp, int mp, int att, int def) { // 생성자를 만들어 변수 초기화
+        // this.name = name;
         this.maxHp = hp;
         this.maxMp = mp;
         this.hp = maxHp;
@@ -53,9 +53,9 @@ public class Character {
         damage = damage <= 0 ? 1 : rand.nextInt(damage); // 조건 연산자(?:) true면 연산식 1 값 false면 연산식2 중 실행
         // damage = rand.nextInt(damage);
         m.hp = m.hp < damage ? m.hp - m.hp : m.hp - damage;
-        System.out.println("\t" + name + "이 공격적으로 " + m.name + "에게 "
+        System.out.println("\t" + name + "이 공격적으로 " + m.names + "에게 "
                 + damage + "만큼 데미지를 주었습니다.");
-        System.out.println("\t" + m.name + "의 현재 HP : " + m.hp + "\n");
+        System.out.println("\t" + m.names + "의 현재 HP : " + m.hp + "\n");
 
     }
 

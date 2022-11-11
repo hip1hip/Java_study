@@ -1,0 +1,6 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "c:\\Users\\seouul it\\Downloads\\jlayer-1.0.1.jar\\jlayer-1.0.1.jar"
+    ]
+}

@@ -1,6 +1,6 @@
 public class Monster {
 
-    String name; // 이름
+    String names;
     int maxHp; // 최대체력
     int maxMp; // 최대마나
     int hp; // 체력
@@ -9,8 +9,8 @@ public class Monster {
     int def; // 방어력
     Item[] items; // 보유아이템을 저장할 배열
 
-    Monster(String name, int maxHp, int maxMp, int hp, int mp, int att, int def, Item[] items) {
-        this.name = name;
+    public Monster(String names2, int maxHp, int maxMp, int hp, int mp, int att, int def, Item[] items) {
+        this.names = names2;
         this.maxHp = hp;
         this.maxMp = mp;
         this.hp = this.maxHp;
@@ -18,6 +18,7 @@ public class Monster {
         this.att = att;
         this.def = def;
         this.items = items;
+
     }
 
     void attack(Character c) {
@@ -25,7 +26,7 @@ public class Monster {
         int damage = att - c.def;
         damage = damage <= 0 ? 1 : damage;
         c.hp = c.hp < damage ? c.hp - c.hp : c.hp - damage;
-        System.out.println("\t" + name + "가 " + c.name + "에게 "
+        System.out.println("\t" + names + "가 " + c.name + "에게 "
                 + damage + "만큼 데미지를 주었습니다.");
         System.out.println("\t" + c.name + "의 현재 HP : " + c.hp + "\n");
 
